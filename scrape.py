@@ -47,7 +47,8 @@ GENDER_LOOKUP = {
     'Male, although I feel like it should be "identify as" instead of "identify with".': 'm',
     'male, unless my wife says otherwise': 'm',
     'woman / female': 'f',
-    'MALE': 'm'
+    'MALE': 'm',
+    'Humanity': None
 }
 
 # almost every piece of data follows the same extraction process,
@@ -180,8 +181,8 @@ def scrape_pages():
                 data['gender_category'] = gender_cat
 
                 # holler if we need to add a new value to the lookup dict
-                if data['gender'] and not gender_cat:
-                    print(data)
+                if data['gender'] and data['gender'] not in GENDER_LOOKUP.keys():  # noqa
+                    print(data['gender'])
 
                 # write data to file
                 writer.writerow(data)
