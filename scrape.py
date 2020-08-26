@@ -41,13 +41,15 @@ GENDER_LOOKUP = {
     'Female': 'f',
     'Male': 'm',
     'Cisgender male': 'm',
-    'female': 'f', 
+    'female': 'f',
     'male': 'm',
     'I am a male.': 'm',
-    'Male, although I feel like it should be "identify as" instead of "identify with".': 'm',
+    'Male, although I feel like it should be "identify as" instead of "identify with".': 'm',  # noqa
     'male, unless my wife says otherwise': 'm',
     'woman / female': 'f',
     'MALE': 'm',
+    "I'm a man.": 'm',
+    "I'm a man...this is a strange question and should have no bearing on this position": 'm',  # noqa
     'Humanity': None
 }
 
