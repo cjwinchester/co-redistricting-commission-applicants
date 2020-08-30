@@ -50,7 +50,9 @@ GENDER_LOOKUP = {
     'MALE': 'm',
     "I'm a man.": 'm',
     "I'm a man...this is a strange question and should have no bearing on this position": 'm',  # noqa
-    'Humanity': None
+    'Humanity': None,
+    'heterosexual male': 'm',
+    'woman': 'f'
 }
 
 # almost every piece of data follows the same extraction process,
