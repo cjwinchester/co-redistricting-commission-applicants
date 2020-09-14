@@ -54,7 +54,8 @@ GENDER_LOOKUP = {
     'heterosexual male': 'm',
     'woman': 'f',
     'Heterosexual Male': 'm',
-    'Male Heterosexual': 'm'
+    'Male Heterosexual': 'm',
+    'FEMALE': 'f'
 }
 
 # almost every piece of data follows the same extraction process,
