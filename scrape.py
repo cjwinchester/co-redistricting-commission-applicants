@@ -56,7 +56,8 @@ GENDER_LOOKUP = {
     'Heterosexual Male': 'm',
     'Male Heterosexual': 'm',
     'FEMALE': 'f',
-    'man': 'm'
+    'man': 'm',
+    'He/Him/His': 'm'
 }
 
 # almost every piece of data follows the same extraction process,
@@ -190,6 +191,7 @@ def scrape_pages():
 
                 # holler if we need to add a new value to the lookup dict
                 if data['gender'] and data['gender'] not in GENDER_LOOKUP.keys():  # noqa
+                    print('-' * 40)
                     print(data['gender'])
 
                 # write data to file

@@ -97,7 +97,6 @@ def download_pages():
             # just a sec k
             time.sleep(random.uniform(1, 2))
 
-
         # now, loop over the detail page links
         for link in links:
 
