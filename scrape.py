@@ -57,7 +57,8 @@ GENDER_LOOKUP = {
     'Male Heterosexual': 'm',
     'FEMALE': 'f',
     'man': 'm',
-    'He/Him/His': 'm'
+    'He/Him/His': 'm',
+    'Transgender': 'n'
 }
 
 # almost every piece of data follows the same extraction process,
@@ -73,11 +74,11 @@ SAME_FORMAT_HEDS = {
     'occupation': ('h5', re.compile('(?i)occupation')),
     'education': ('h5', re.compile('(?i)educational background')),
     'statement': ('h5', 'Statement'),
-    'professional_background': ('h5', re.compile('(?i)professional background')),
+    'professional_background': ('h5', re.compile('(?i)professional background')),  # noqa
     'org_list': ('h5', re.compile('(?i)political and civic organizations')),
     'analytic_skills': ('h5', re.compile('(?i)analytic skills')),
     'consensus_statement': ('h5', re.compile('(?i)working with consensus')),
-    'past_political_activity': ('h5', re.compile('(?i)past political activity'))
+    'past_political_activity': ('h5', re.compile('(?i)past political activity'))  # noqa
 }
 
 
@@ -128,7 +129,7 @@ def scrape_detail_page(filepath):
             data_out[header] = other_names
         elif header == 'latinx':
             # and this one
-            latinx = soup.find('h6', text=re.compile('(?i)hispanic/latino/spanish'))
+            latinx = soup.find('h6', text=re.compile('(?i)hispanic/latino/spanish'))  # noqa
             if latinx:
                 data_out[header] = True
             else:
