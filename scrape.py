@@ -58,7 +58,11 @@ GENDER_LOOKUP = {
     'FEMALE': 'f',
     'man': 'm',
     'He/Him/His': 'm',
-    'Transgender': 'n'
+    'Transgender': 'n',
+    'Woman': 'f',
+    'Male.   I am also openly gay.': 'm',
+    'I find this irrelevant. This is a committee to develop Legislative Districts.': None,  # noqa
+    'Male.  I am also openly gay.': 'm'
 }
 
 # almost every piece of data follows the same extraction process,
