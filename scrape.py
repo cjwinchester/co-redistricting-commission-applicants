@@ -5,7 +5,6 @@ import csv
 from download import (TIMES_APPLIED_LOOKUP_FILE, PAGES_TO_SCRAPE,
                       BASE_URL, URL_PATTERN)
 
-import requests
 from bs4 import BeautifulSoup
 
 
@@ -64,7 +63,8 @@ GENDER_LOOKUP = {
     'I find this irrelevant. This is a committee to develop Legislative Districts.': None,  # noqa
     'Male.  I am also openly gay.': 'm',
     'I am an American male with military service': 'm',
-    'Femaile': 'f'
+    'Femaile': 'f',
+    'Cisgender Male': 'm'
 }
 
 # almost every piece of data follows the same extraction process,
