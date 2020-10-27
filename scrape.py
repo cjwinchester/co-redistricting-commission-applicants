@@ -64,7 +64,8 @@ GENDER_LOOKUP = {
     'Male.  I am also openly gay.': 'm',
     'I am an American male with military service': 'm',
     'Femaile': 'f',
-    'Cisgender Male': 'm'
+    'Cisgender Male': 'm',
+    'Make': 'm'  # assume typo here
 }
 
 # almost every piece of data follows the same extraction process,
