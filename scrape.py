@@ -65,7 +65,8 @@ GENDER_LOOKUP = {
     'I am an American male with military service': 'm',
     'Femaile': 'f',
     'Cisgender Male': 'm',
-    'Make': 'm'  # assume typo here
+    'Make': 'm',  # assume typo here
+    'emal': 'm'  # assume typo here
 }
 
 # almost every piece of data follows the same extraction process,
