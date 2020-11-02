@@ -2,8 +2,10 @@ import os
 import re
 import csv
 
-from download import (TIMES_APPLIED_LOOKUP_FILE, PAGES_TO_SCRAPE,
-                      BASE_URL, URL_PATTERN)
+from download import (TIMES_APPLIED_LOOKUP_FILE,
+                      PAGES_TO_SCRAPE,
+                      BASE_URL,
+                      URL_PATTERN)
 
 from bs4 import BeautifulSoup
 
@@ -66,7 +68,10 @@ GENDER_LOOKUP = {
     'Femaile': 'f',
     'Cisgender Male': 'm',
     'Make': 'm',  # assume typo here
-    'emal': 'm'  # assume typo here
+    'emal': 'm',  # assume typo here
+    'gay woman': 'f',
+    'WOMEN': 'f',
+    'gay woman': 'f'
 }
 
 # almost every piece of data follows the same extraction process,
@@ -187,7 +192,10 @@ def scrape_pages():
 
                 # and the application datetime and URL to their
                 # detail page
-                time_applied = lookup[applicant_id]['time_applied']
+                time_applied = None
+                lookup_rec = lookup.get(applicant_id, None)
+                if lookup_rec:
+                    time_applied = lookup_rec.get('time_applied', None)
                 data['application_datetime'] = time_applied
                 data['application_url'] = URL_PATTERN.format(
                     BASE_URL,
