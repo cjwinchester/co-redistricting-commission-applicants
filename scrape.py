@@ -32,8 +32,12 @@ CSV_HEADERS = [
     'analytic_skills',
     'consensus_statement',
     'past_political_activity',
-    'application_url'
+    'application_url',
+    'link_to_html'
 ]
+
+
+detail_page_template = 'https://github.com/cjwinchester/co-redistricting-commission-applicants/blob/master/{}'  # noqa
 
 
 # a lookup table to categorize the freeform text gender values
@@ -71,7 +75,8 @@ GENDER_LOOKUP = {
     'emal': 'm',  # assume typo here
     'gay woman': 'f',
     'WOMEN': 'f',
-    'gay woman': 'f'
+    'gay woman': 'f',
+    'Female.': 'f'
 }
 
 # almost every piece of data follows the same extraction process,
@@ -180,11 +185,16 @@ def scrape_pages():
             # loop over this list of files
             for file in html_files:
 
+                link_to_html = detail_page_template.format(file)
+
                 # nab the applicant ID from the filename
                 applicant_id = file.split('/')[-1].split('.')[0]
 
                 # scrape the data out of the page
                 data = scrape_detail_page(file)
+
+                # add link to html on github
+                data['link_to_html'] = link_to_html
 
                 # add the commission type and applicant ID values
                 data['commission_type'] = page
