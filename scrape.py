@@ -63,7 +63,7 @@ GENDER_LOOKUP = {
     'FEMALE': 'f',
     'man': 'm',
     'He/Him/His': 'm',
-    'Transgender': 'n',
+    'Transgender': 'o',
     'Woman': 'f',
     'Male.   I am also openly gay.': 'm',
     'I find this irrelevant. This is a committee to develop Legislative Districts.': None,  # noqa
@@ -76,7 +76,39 @@ GENDER_LOOKUP = {
     'gay woman': 'f',
     'WOMEN': 'f',
     'gay woman': 'f',
-    'Female.': 'f'
+    'Female.': 'f',
+    'I identify as female and since you did not ask it anywhere, also as queer. Which is an important diversity issue in Colorado.': 'f',  # noqa
+    'M': 'm',
+    'female, cis-gender': 'f',
+    'I’m a female by birth I identify as a woman. God created me a woman 👩': 'f',  # noqa
+    'Male (He/Him)': 'm',
+    'Biological Male not altered': 'm',
+    'female.': 'f',
+    'Hetero Female': 'f',
+    'femail': 'f',
+    'she/her/hers': 'f',
+    'Female-also, attachments won’t upload': 'f',
+    'Cis-Male/Masculine.': 'm',
+    'Man': 'm',
+    'cismale': 'm',
+    'Cisfemale': 'f',
+    'Decline': None,
+    'Female. Please note that I have lived in predominantly hispanic neighborhoods for extended periods throughout my life in Colorado.': 'f',  # noqa
+    'Gay Male': 'm',
+    'Non-binary, genderfluid': 'o',
+    'Cisgender, Gay Male': 'm',
+    'Women': 'f',
+    'Male (he/his - pronouns)': 'm',
+    'female, cis-gender': 'f',
+    'Female - hetero': 'f',
+    'Cisgender, Gay Man': 'm',
+    'Male.': 'm',
+    'cismale': 'm',
+    'I am a man.': 'm',
+    'Queer woman': 'f',
+    'Female. And I am queer, which you did not ask but I feel is important in the sphere of getting voices heard.': 'f',  # noqa
+    'She/her/hers': 'f',
+    'Male (He/Him)': 'm'
 }
 
 # almost every piece of data follows the same extraction process,
