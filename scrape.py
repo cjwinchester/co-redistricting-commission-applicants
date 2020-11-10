@@ -108,7 +108,32 @@ GENDER_LOOKUP = {
     'Queer woman': 'f',
     'Female. And I am queer, which you did not ask but I feel is important in the sphere of getting voices heard.': 'f',  # noqa
     'She/her/hers': 'f',
-    'Male (He/Him)': 'm'
+    'Male (He/Him)': 'm',
+    'F': 'f',
+    'Male by birth': 'm',
+    'Female cisgendered': 'f',
+    'ciswoman': 'f',
+    'Male, I have that chromosome': 'm',
+    'Female and my pronouns are she/her/hers': 'f',
+    'Male, Gay': 'm',
+    'He/His': 'm',
+    'female/feminine': 'f',
+    'Female and gender non-conforming': 'o',
+    'Cis Male': 'm',
+    'Female (she, her, hers pronouns)': 'f',
+    'Female - She/Her/Hers': 'f',
+    'Woman/female': 'f',
+    'human female genome': 'f',
+    'Woman/Female': 'f',
+    'Female (She/Her/Hers)': 'f',
+    'ciswoman': 'f',
+    'woman/female': 'f',
+    'Female and my pronouns are she/her/hers': 'f',
+    'Female, she/her': 'f',
+    'Male by birth': 'm',
+    'Transgender Female': 'o',
+    'Female (pronouns she her hers)': 'f',
+    'female and gender non-conforming': 'o'
 }
 
 # almost every piece of data follows the same extraction process,
