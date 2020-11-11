@@ -1,6 +1,7 @@
 import os
 import re
 import csv
+import json
 
 from download import (TIMES_APPLIED_LOOKUP_FILE,
                       PAGES_TO_SCRAPE,
@@ -41,100 +42,8 @@ detail_page_template = 'https://github.com/cjwinchester/co-redistricting-commiss
 
 
 # a lookup table to categorize the freeform text gender values
-GENDER_LOOKUP = {
-    'male.': 'm',
-    'Female': 'f',
-    'Male': 'm',
-    'Cisgender male': 'm',
-    'female': 'f',
-    'male': 'm',
-    'I am a male.': 'm',
-    'Male, although I feel like it should be "identify as" instead of "identify with".': 'm',  # noqa
-    'male, unless my wife says otherwise': 'm',
-    'woman / female': 'f',
-    'MALE': 'm',
-    "I'm a man.": 'm',
-    "I'm a man...this is a strange question and should have no bearing on this position": 'm',  # noqa
-    'Humanity': None,
-    'heterosexual male': 'm',
-    'woman': 'f',
-    'Heterosexual Male': 'm',
-    'Male Heterosexual': 'm',
-    'FEMALE': 'f',
-    'man': 'm',
-    'He/Him/His': 'm',
-    'Transgender': 'o',
-    'Woman': 'f',
-    'Male.   I am also openly gay.': 'm',
-    'I find this irrelevant. This is a committee to develop Legislative Districts.': None,  # noqa
-    'Male.  I am also openly gay.': 'm',
-    'I am an American male with military service': 'm',
-    'Femaile': 'f',
-    'Cisgender Male': 'm',
-    'Make': 'm',  # assume typo here
-    'emal': 'm',  # assume typo here
-    'gay woman': 'f',
-    'WOMEN': 'f',
-    'gay woman': 'f',
-    'Female.': 'f',
-    'I identify as female and since you did not ask it anywhere, also as queer. Which is an important diversity issue in Colorado.': 'f',  # noqa
-    'M': 'm',
-    'female, cis-gender': 'f',
-    'I’m a female by birth I identify as a woman. God created me a woman 👩': 'f',  # noqa
-    'Male (He/Him)': 'm',
-    'Biological Male not altered': 'm',
-    'female.': 'f',
-    'Hetero Female': 'f',
-    'femail': 'f',
-    'she/her/hers': 'f',
-    'Female-also, attachments won’t upload': 'f',
-    'Cis-Male/Masculine.': 'm',
-    'Man': 'm',
-    'cismale': 'm',
-    'Cisfemale': 'f',
-    'Decline': None,
-    'Female. Please note that I have lived in predominantly hispanic neighborhoods for extended periods throughout my life in Colorado.': 'f',  # noqa
-    'Gay Male': 'm',
-    'Non-binary, genderfluid': 'o',
-    'Cisgender, Gay Male': 'm',
-    'Women': 'f',
-    'Male (he/his - pronouns)': 'm',
-    'female, cis-gender': 'f',
-    'Female - hetero': 'f',
-    'Cisgender, Gay Man': 'm',
-    'Male.': 'm',
-    'cismale': 'm',
-    'I am a man.': 'm',
-    'Queer woman': 'f',
-    'Female. And I am queer, which you did not ask but I feel is important in the sphere of getting voices heard.': 'f',  # noqa
-    'She/her/hers': 'f',
-    'Male (He/Him)': 'm',
-    'F': 'f',
-    'Male by birth': 'm',
-    'Female cisgendered': 'f',
-    'ciswoman': 'f',
-    'Male, I have that chromosome': 'm',
-    'Female and my pronouns are she/her/hers': 'f',
-    'Male, Gay': 'm',
-    'He/His': 'm',
-    'female/feminine': 'f',
-    'Female and gender non-conforming': 'o',
-    'Cis Male': 'm',
-    'Female (she, her, hers pronouns)': 'f',
-    'Female - She/Her/Hers': 'f',
-    'Woman/female': 'f',
-    'human female genome': 'f',
-    'Woman/Female': 'f',
-    'Female (She/Her/Hers)': 'f',
-    'ciswoman': 'f',
-    'woman/female': 'f',
-    'Female and my pronouns are she/her/hers': 'f',
-    'Female, she/her': 'f',
-    'Male by birth': 'm',
-    'Transgender Female': 'o',
-    'Female (pronouns she her hers)': 'f',
-    'female and gender non-conforming': 'o'
-}
+with open('gender_lookup.json', 'r') as infile:
+    GENDER_LOOKUP = json.load(infile)
 
 # almost every piece of data follows the same extraction process,
 # with the only difference being the text (or regex) search pattern
@@ -270,13 +179,18 @@ def scrape_pages():
                 ) + applicant_id
 
                 # look up their gender category and add a new value
-                gender_cat = GENDER_LOOKUP.get(data['gender'], None)
-                data['gender_category'] = gender_cat
+                gender_cat = None
 
-                # holler if we need to add a new value to the lookup dict
-                if data['gender'] and data['gender'] not in GENDER_LOOKUP.keys():  # noqa
-                    print('-' * 40)
-                    print(data['gender'])
+                if data['gender']:
+                    gender_up = data['gender'].upper()
+                    gender_cat = GENDER_LOOKUP.get(gender_up, None)
+
+                    # holler if we need to add a new value to the lookup dict
+                    if gender_up not in GENDER_LOOKUP.keys():  # noqa
+                        print('-' * 40)
+                        print(gender_up)
+
+                data['gender_category'] = gender_cat
 
                 # write data to file
                 writer.writerow(data)
