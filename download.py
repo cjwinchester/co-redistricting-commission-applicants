@@ -106,7 +106,7 @@ def download_pages():
             # and reformat the application date to ISO 8601
             datetime_applied = datetime.strptime(
                 link['added'].replace(' UTC', ''),
-                '%Y-%m-%d %H:%M:%S'
+                '%Y-%m-%d %H:%M:%S %z'
             ).isoformat() + 'Z'
 
             # write timestamp data to file
